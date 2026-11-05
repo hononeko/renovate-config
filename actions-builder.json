@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Custom regex managers for repositories authoring GitHub Actions workflows and actions",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Images pinned as name:tag@sha256:digest in actions and workflows",
+      "managerFilePatterns": [
+        "/(^|/)action\\.ya?ml$/",
+        "/^\\.github/workflows/.+\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "(?<depName>[a-z0-9][a-z0-9._/-]*):(?<currentValue>[A-Za-z0-9][A-Za-z0-9._-]*)@(?<currentDigest>sha256:[a-f0-9]{64})"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Tool versions an action defaults to, marked by a # renovate: comment",
+      "managerFilePatterns": [
+        "/(^|/)action\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: extractVersion=(?<extractVersion>\\S+))?\\s+default: (?<currentValue>\\S+)"
+      ]
+    }
+  ]
+}

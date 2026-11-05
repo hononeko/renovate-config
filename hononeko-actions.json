@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Rules for repositories consuming hononeko/actions via floating major tag (v1)",
+  "packageRules": [
+    {
+      "description": "Keep hononeko/actions on the floating major tag without pinning digests",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["hononeko/actions", "hononeko/actions/**"],
+      "pinDigests": false,
+      "minimumReleaseAge": "0 days"
+    }
+  ]
+}

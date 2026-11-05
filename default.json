@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Default organization-wide Renovate configuration for hononeko",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    "mergeConfidence:all-badges",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "reviewersFromCodeOwners": true,
+  "additionalReviewers": ["vehkiya"]
+}
